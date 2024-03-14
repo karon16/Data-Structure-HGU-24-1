@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define FILE_BASE "./Test files/"
+#include <string.h>
 
 void sort(int list[], int len);
 int getNumbersCount(char file_name[]);
@@ -9,13 +9,18 @@ int getSmallestNumber(char file_name[]);
 
 
 int main(void){
-    char file_names[3][25] = {"./Test files/file1.txt","./Test files/file2.txt","./Test files/file3.txt"};
 
-    for(int i = 0; i < 3; i++){
-        int smallest = getSmallestNumber(file_names[i]);
-        printf("Input filename: %s\n", file_names[i]);
-        printf("The smallest number is %d\n", smallest);
-    }
+    char file_name[10];
+    printf("Input filename: ");
+    scanf("%s",file_name);
+
+    char file_uri[40] = "./Test files/";
+    strcat(file_uri, file_name);
+
+    printf("Output filename: %s\n", file_uri);
+
+    int smallest = getSmallestNumber(file_uri);
+    printf("The smallest number is %d\n", smallest);
 
     return 0;
 }

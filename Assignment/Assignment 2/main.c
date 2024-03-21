@@ -9,11 +9,6 @@ int main(void) {
     // create an array to hold letters and numbers letters from [0,25] and numvers from [26,35] and fill with zeros
     int characters[35] = {0};
 
-    //fill the array with letters and numbers with zeros for incrementing characters
-    for(int i = 0; i < 35; i++){
-        characters[i] = 0;
-    }
-
     //read the file
     FILE *file = NULL;
     file = fopen(FILE_NAME, "r");
@@ -27,8 +22,12 @@ int main(void) {
     // if the file opened successfully read every character
     int c=0;
     while(((c = fgetc(file)) != EOF)){
+        // check it the lowercase character is a alpha character and increment by one characters[c-97]
+        // 97 represents the ASCII value of "a" 
         if(isalpha(tolower(c)) != 0){
             characters[c - 97] += 1;
+        //check if the character is a digit and increment by one character[(c-48) + 26] 
+        // 48 represents the ASCII value "0"
         }else if(isdigit(c) != 0){
             characters[(c - 48) + 26] += 1;
         }

@@ -2,18 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+// functions for matrix operations
 float** add_matrix(float** a, int ah, int aw, float** b, int bh, int bw);
 float** mul_matrix(float** a, int ah, int aw, float** b, int bh, int bw);
 float** transpose_matrix(float** a, int ah, int aw);
 
-// Function prototypes (declarations) for clarity
+// utility functions
 float **make2dArray(int rows, int cols);
 void free2dArray(float** array, int rows);
-void readFile(float** a, const char* file_name); // Use const char* for safer string handling
+int* read_file(float*** a, int* matrix_size); 
 
 int main(void) {
     char operation[1];
     char file_a_name[10], file_b_name[10];
+    int matrix_a_size[2], matrix_b_size[2];
     int ah, aw, bh, bw;
     int i, j, k;
 
@@ -24,61 +26,24 @@ int main(void) {
     scanf("%c", operation);
 
     if (strcmp(operation, "a") == 0) {
-        printf("> Input first file name -> ");
-        scanf("%s", file_a_name);
-        printf("> Input second file name -> ");
-        scanf("%s", file_b_name);
 
-        // open files
-        FILE *file_a = NULL;
-        FILE *file_b = NULL;
-        file_a = fopen(file_a_name, "r");
-        file_b = fopen(file_b_name, "r");
+        //call function read_file to read files
+        read_file(&a, matrix_a_size);
+        ah = matrix_a_size[0];
+        aw = matrix_a_size[1];
 
-        // check for errors file opening files
-        if (file_a == NULL || file_b == NULL) {
-            printf("> Error opening files.\n");
-            return 1; // Indicate error
-        }
-
-        // get rows and colums for each matrix
-        fscanf(file_a, "%d %d", &ah, &aw);
-        fscanf(file_b, "%d %d", &bh, &bw);
+        read_file(&b, matrix_b_size);
+        bh = matrix_b_size[0];
+        bw = matrix_b_size[1];
 
         // check for matrix missmatch errors
         if (aw != bw || ah != bh) {
             printf("Matrix dimensions mismatch\n");
-            fclose(file_a);
-            fclose(file_b);
             return 1; // Indicate error
         }
 
-        //if no error, allocate memory for each matrix
-        a = make2dArray(ah, aw);
-        b = make2dArray(bh, bw);
+        float **result = add_matrix(a, ah, aw, b, bh, bw);
 
-        // fill each cell of the each matrix
-        for (i = 0; i < ah; i++) {
-            for (j = 0; j < aw; j++) {
-                fscanf(file_a, "%f", &a[i][j]);
-                fscanf(file_b, "%f", &b[i][j]);
-            }
-        }
-
-        // close file after reading all data
-        fclose(file_a);
-        fclose(file_b);
-
-        //perform addition
-        float **result = NULL; 
-        result = make2dArray(ah, aw); // allocate memory for result array
-
-        for (i = 0; i < ah; i++) {
-            for (j = 0; j < aw; j++) {
-                result[i][j] = a[i][j] + b[i][j];
-            }
-        }
-        
         //print result
         printf("%-3d%d\n", ah, aw);
         for (i = 0; i < ah; i++) {
@@ -88,76 +53,25 @@ int main(void) {
             printf("\n");
         }
 
-        // free memory
-        free2dArray(a, aw);
-        free2dArray(b, bw);
-
     } else if (strcmp(operation, "m") == 0) {
-        // get file names
-        printf("> Input first file name -> ");
-        scanf("%s", file_a_name);
-        printf("> Input second file name -> ");
-        scanf("%s", file_b_name);
+        //call function read_file to read files
+        read_file(&a, matrix_a_size);
+        ah = matrix_a_size[0];
+        aw = matrix_a_size[1];
 
-        // open and read files
-        FILE *file_a = NULL;
-        FILE *file_b = NULL;
-        file_a = fopen(file_a_name, "r");
-        file_b = fopen(file_b_name, "r");
-
-        // check for errors file opening files
-        if (file_a == NULL || file_b == NULL) {
-            printf("> Error opening files.\n");
-            return 1; // Indicate error
-        }
-
-        // get rows and colums for each matrix
-        fscanf(file_a, "%d %d", &ah, &aw);
-        fscanf(file_b, "%d %d", &bh, &bw);
+        read_file(&b, matrix_b_size);
+        bh = matrix_b_size[0];
+        bw = matrix_b_size[1];
 
         // check for matrix missmatch errors
         if (aw != bh) {
             printf("Matrix dimensions mismatch\n");
-            fclose(file_a);
-            fclose(file_b);
             return 1; // Indicate error
         }
 
-        //if no error, allocate memory for each matrix
-        a = make2dArray(ah, aw);
-        b = make2dArray(bh, bw);
+        float **result = mul_matrix(a, ah, aw, b, bh, bw);
 
-        // populate matrix a with data
-        for (i = 0; i < ah; i++) {
-            for (j = 0; j < aw; j++) {
-                fscanf(file_a, "%f", &a[i][j]);
-            }
-        }
-
-        // populate matrix b with data
-        for (i = 0; i < bh; i++) {
-            for (j = 0; j < bw; j++) {
-                fscanf(file_b, "%f", &b[i][j]);
-            }
-        }
-
-        // close file after reading all data
-        fclose(file_a);
-        fclose(file_b);
-
-        // perform multiplication
-        float **result = NULL; 
-        result = make2dArray(ah, bw); // allocate memory for result array
-
-        for (i = 0; i < ah; i++) {
-            for (j = 0; j < bw; j++) {
-                for(k = 0; k < aw; k++) {
-                    result[i][j] += (a[i][k] * b[k][j]);
-                }
-            }
-        }
-
-         //print result
+        //print result
         printf("%-5d%d\n", aw, bh);
         for (i = 0; i < ah; i++) {
             for (j = 0; j < bw; j++) {
@@ -166,50 +80,13 @@ int main(void) {
             printf("\n");
         }
 
-        // free memory
-        free2dArray(a, aw);
-        free2dArray(b, bw);
-
     } else if (strcmp(operation, "t") == 0) {
-        // get file name
-        printf("> Input file name -> ");
-        scanf("%s", file_a_name);
+        //call function read_file to read files
+        read_file(&a, matrix_a_size);
+        ah = matrix_a_size[0];
+        aw = matrix_a_size[1];
 
-        //open and read file
-        FILE *file_a = NULL;
-        file_a = fopen(file_a_name, "r");
-
-        // check for errors file opening files
-        if (file_a == NULL) {
-            printf("> Error opening file.\n");
-            return 1; // Indicate error
-        }
-
-        // get rows and colums for each matrix
-        fscanf(file_a, "%d %d", &ah, &aw);
-
-        // Allocate memory for each matrix
-        a = make2dArray(ah, aw);
-
-        // populate matrix a with data
-        for (i = 0; i < ah; i++) {
-            for (j = 0; j < aw; j++) {
-                fscanf(file_a, "%f", &a[i][j]);
-            }
-        }
-
-         // close file after reading all data
-        fclose(file_a);
-
-        //perform transposition transformation
-        float **result = NULL; 
-        result = make2dArray(aw, ah); // allocate memory for result array
-        
-        for (i = 0; i < aw; i++) {
-            for (j = 0; j < ah; j++) {
-                result[i][j] = a[j][i];
-            }
-        }
+        float **result = transpose_matrix(a, ah, aw);
 
         // print result
         printf("%-2d%d\n", ah, aw);
@@ -219,11 +96,7 @@ int main(void) {
             }
             printf("\n");
         }
-
-        // free memory
-        free2dArray(a, aw);
-        free2dArray(b, bw);
-        
+ 
     } else {
         printf("Invalid operation.\n");
     }
@@ -246,4 +119,107 @@ void free2dArray(float **array, int rows){ // deallocates a two dimensional arra
         free(array[i]);
     free(array); /* free memory for row pointers */
     return;
+}
+
+float** add_matrix(float** a, int ah, int aw, float** b, int bh, int bw){
+    int i, j, k;
+    //perform addition
+    float **result = NULL; 
+    result = make2dArray(ah, aw); // allocate memory for result array
+
+    printf("inside add_matrix");
+
+    for (i = 0; i < ah; i++) {
+        for (j = 0; j < aw; j++) {
+            result[i][j] = a[i][j] + b[i][j];
+        }
+    }
+
+    // free memory
+    free2dArray(a, aw);
+    free2dArray(b, bw);
+
+    // return result
+    return result;
+}
+
+float** mul_matrix(float** a, int ah, int aw, float** b, int bh, int bw){
+    int i, j, k;
+    // perform multiplication
+    float **result = NULL; 
+    result = make2dArray(ah, bw); // allocate memory for result array
+
+    for (i = 0; i < ah; i++) {
+        for (j = 0; j < bw; j++) {
+            for(k = 0; k < aw; k++) {
+                result[i][j] += (a[i][k] * b[k][j]);
+            }
+        }
+    }
+
+    // free memory
+    free2dArray(a, aw);
+    free2dArray(b, bw);
+
+    //return result
+    return result;
+}
+
+float** transpose_matrix(float** a, int ah, int aw){ 
+    int i, j, k;
+    //perform transposition transformation
+    float **result = NULL; 
+    result = make2dArray(aw, ah); // allocate memory for result array
+
+    for (i = 0; i < aw; i++) {
+        for (j = 0; j < ah; j++) {
+            result[i][j] = a[j][i];
+        }
+    }
+
+    // free memory
+    free2dArray(a, aw);
+
+    // return result
+    return result;
+}
+
+int* read_file(float*** a, int* matrix_size){
+    int i, j, k;
+    char file_name[10];
+    int ah, aw;
+    printf("> Input file name -> ");
+    scanf("%s", file_name);
+
+    // open files
+    FILE *file = NULL;
+    file = fopen(file_name, "r");
+
+    // check for errors file opening files
+    if (file == NULL) {
+        printf("> Error opening files.\n");
+        return NULL; // Indicate error
+    }
+
+    // get rows and colums for each matrix
+    fscanf(file, "%d %d", &ah, &aw);
+
+    //if no error, allocate memory for each matrix
+    *a = make2dArray(ah, aw);
+
+    // fill each cell of the each matrix
+    for (i = 0; i < ah; i++) {
+        for (j = 0; j < aw; j++) {
+            fscanf(file, "%f", &((*a)[i][j]));
+        }
+    }
+
+    matrix_size[0] = ah;
+    matrix_size[1] = aw;
+
+    // close file after reading all data
+    fclose(file);
+
+    // return the matrix size
+    return matrix_size;
 }

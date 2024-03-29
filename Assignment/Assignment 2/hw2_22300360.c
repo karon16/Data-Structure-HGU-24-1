@@ -24,15 +24,22 @@ int main(void) {
     while(((c = fgetc(file)) != EOF)){
         // check it the lowercase character is a alpha character and increment by one characters[c-97]
         // 97 represents the ASCII value of "a" 
-        if(isalpha(tolower(c)) != 0){
-            characters[c - 97] += 1;
+
+        // I am getting the charachter being upper or lower case
+        // I then convert it to lower case because I chose to deal with lower case ASCII characters
+        // And I increment the value in my array
+        // So this means that receiving A or a is the same thing because at the end I convert it to lower case
+        if(isalpha(c) != 0){
+            characters[tolower(c) - 97] += 1;
         //check if the character is a digit and increment by one character[(c-48) + 26] 
         // 48 represents the ASCII value "0"
         }else if(isdigit(c) != 0){
-            characters[(c - 48) + 26] += 1;
+            characters[(tolower(c) - 48) + 26] += 1;
         }
         
     }
+
+    
 
     for(int i = 0; i < 35; i++){
         if(i < 26){

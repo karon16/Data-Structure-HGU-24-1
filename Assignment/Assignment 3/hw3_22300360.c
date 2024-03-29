@@ -53,6 +53,8 @@ int main(void) {
             printf("\n");
         }
 
+        free2dArray(result, bw);;
+
     } else if (strcmp(operation, "m") == 0) {
         //call function read_file to read files
         read_file(&a, matrix_a_size);
@@ -79,6 +81,7 @@ int main(void) {
             }
             printf("\n");
         }
+        free2dArray(result, bw);;
 
     } else if (strcmp(operation, "t") == 0) {
         //call function read_file to read files
@@ -96,6 +99,7 @@ int main(void) {
             }
             printf("\n");
         }
+        free2dArray(result, aw);
  
     } else {
         printf("Invalid operation.\n");
@@ -126,8 +130,6 @@ float** add_matrix(float** a, int ah, int aw, float** b, int bh, int bw){
     //perform addition
     float **result = NULL; 
     result = make2dArray(ah, aw); // allocate memory for result array
-
-    printf("inside add_matrix");
 
     for (i = 0; i < ah; i++) {
         for (j = 0; j < aw; j++) {

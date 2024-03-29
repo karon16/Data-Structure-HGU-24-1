@@ -48,7 +48,7 @@ int main(void) {
         printf("%-3d%d\n", ah, aw);
         for (i = 0; i < ah; i++) {
             for (j = 0; j < aw; j++) {
-                printf("%-3.f", result[i][j]);
+                printf("%-3.1f", result[i][j]);
             }
             printf("\n");
         }
@@ -77,7 +77,7 @@ int main(void) {
         printf("%-5d%d\n", aw, bh);
         for (i = 0; i < ah; i++) {
             for (j = 0; j < bw; j++) {
-                printf("%-5.f", result[i][j]);
+                printf("%-5.1f", result[i][j]);
             }
             printf("\n");
         }
@@ -95,7 +95,7 @@ int main(void) {
         printf("%-2d%d\n", ah, aw);
         for (i = 0; i < aw; i++) {
             for (j = 0; j < ah; j++) {
-                printf("%-2.f",result[i][j]);
+                printf("%-2.1f",result[i][j]);
             }
             printf("\n");
         }

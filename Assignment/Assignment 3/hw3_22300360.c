@@ -55,6 +55,7 @@ int main(void) {
             }
             printf("\n");
         }
+        // free memory
         free2dArray(a, ah);
         free2dArray(b, bh);
         free2dArray(result, ah);
@@ -88,6 +89,7 @@ int main(void) {
             printf("\n");
         }
 
+        // free memort
         free2dArray(a, ah);
         free2dArray(b, bh);
         free2dArray(result, ah);
@@ -110,6 +112,7 @@ int main(void) {
             printf("\n");
         }
 
+        // free memory
         free2dArray(a, ah);
         free2dArray(result, aw);
  

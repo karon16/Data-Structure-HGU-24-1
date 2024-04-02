@@ -1,0 +1,7 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     "/Users/christopherbuhendwa/Documents/한동대학교/Semester 3/Data Structures/Coding /Assignment/Assignment 2/hw2_22300360"
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100000D30, symSize: 0x204 }
+  - { offsetInCU: 0x42, offset: 0x42, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100000D30, symSize: 0x204 }
+...

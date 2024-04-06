@@ -23,7 +23,7 @@ char *trim(char*);
 int main() {
     FILE *fp;
     char file_name[1024];
-    char *line=NULL;
+    char *line = NULL;
     size_t len;
     Person contacts[1000];
 
@@ -33,6 +33,7 @@ int main() {
         printf("Cannot open %s\n", file_name);
         exit(-1);
     }
+    // done -------------------
 
     int cont_i=0;
     while (getline(&line, &len, fp) != EOF){

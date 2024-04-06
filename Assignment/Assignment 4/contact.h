@@ -25,17 +25,20 @@ class Contact {
     // no access to these functions from clients
     Person str2person(char*); 
     Date str2date(char*);
-    char* trim(char*);
+    char* trim(char*s);
     
   public:
     Contact(int size){ 
         total_num = 0;
         persons = new Person[size];
     }
+    
     ~Contact() {delete persons;} 
     
     void load(string);
     void print();
+
+
 };
 
 #endif

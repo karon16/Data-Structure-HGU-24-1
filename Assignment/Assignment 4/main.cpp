@@ -8,7 +8,7 @@ using namespace std;
 int main() {
     string file_name;
     Contact* contacts;
-    contacts = new Contact(MAX_NUM); 
+    contacts = new Contact(MAX_NUM);
 
     cout << "file name of contact data:" << endl; 
     cin >> file_name;

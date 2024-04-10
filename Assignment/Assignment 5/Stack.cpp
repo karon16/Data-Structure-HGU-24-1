@@ -21,6 +21,10 @@ Stack::Stack(int num){
     stack = new Element*[max_size];
 }
 
+Stack::~Stack(){
+    delete stack;
+}
+
 void Stack::Push(Element* item){
     if(IsFullS()){
         cout << "The stack is full" << endl;

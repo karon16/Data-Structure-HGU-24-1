@@ -4,6 +4,10 @@
 
 #ifndef ASSIGNMENT_5_STACK_H
 #define ASSIGNMENT_5_STACK_H
+#include <string>
+
+using namespace std;
+
 
 typedef struct{
     int key;
@@ -20,8 +24,8 @@ public:
     Stack();
     Stack(int num);
     ~Stack();
-    bool IsFullS();
-    bool IsEmptyS();
+    bool IsFullS() const;
+    bool IsEmptyS() const;
     void Push(Element* item);
     Element* Pop();
     void Print () const;

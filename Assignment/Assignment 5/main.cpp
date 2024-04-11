@@ -25,5 +25,7 @@ int main(){
     if(item) cout << "Pop: " << item->key << endl;
     stack->Print();
 
+    delete stack;
+
     return 0;
 }

@@ -17,7 +17,7 @@ if the current operator is less the previous, we pop the previous and push the c
 Parentheis represent a sub operation
 * a * (b+c)/d
 
-*a * (b+c)/d => a
+* a * (b+c)/d => a
 * a * (b+c)/d => Stack.push(*) => *
 * a * (b+c)/d => Stack.push(opening parenthesis) => *(
 * a * (b+c)/d => b => ab

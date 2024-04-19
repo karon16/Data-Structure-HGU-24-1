@@ -1,16 +1,17 @@
-#include <fstream>
+#include <iostream>
 #include <string>
 #include "calc.h"
 
 int main() {
-	string str;
+    string str;
 
-    cout << "input infix expression:";
-	getline(cin, str);	// reading one line from keyboard
+    cout << "Input infix expression: ";
+    getline(cin, str);    // reading one line from keyboard
 
-	Calculator calc(str);
+    Calculator calc(str);
 
-    cout << "result = " << calc.evaluate() << endl;
+    cout << "Postfix expression: " << calc.infixToPostfix(str) << endl;
+    cout << "Result = " << calc.evaluate() << endl;
 
-	return 0;
+    return 0;
 }

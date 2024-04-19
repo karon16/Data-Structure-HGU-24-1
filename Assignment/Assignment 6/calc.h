@@ -2,18 +2,19 @@
 #define  __CALC_H__
 
 #include <iostream>
-#include <ctype.h>  
-#include <stdlib.h> 
+#include <string>
+#include "stack.h"
 
 using namespace std;
 
 class Calculator {
-	private:
-    char infix[];
-    char postfix[];
-	public:
-		Calculator(string str) { };
-		float evaluate();
+private:
+    string postfix; // Stores the postfix expression
+
+public:
+    Calculator(string str); // Constructor
+    string infixToPostfix(string infix); // Convert infix to postfix
+    float evaluate(); // Evaluate the postfix expression
 };
 
 #endif

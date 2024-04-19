@@ -6,6 +6,11 @@
 
 using namespace std;
 
+Contact::Contact(int size) {
+        total_num = 0;
+        persons = new Person[size];
+}
+
 void Contact::load(string file_name) {
     ifstream file(file_name);
     if (!file.is_open()) {

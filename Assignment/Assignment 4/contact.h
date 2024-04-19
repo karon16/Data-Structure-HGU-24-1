@@ -28,10 +28,8 @@ class Contact {
     char* trim(char*s);
     
   public:
-    Contact(int size){ 
-        total_num = 0;
-        persons = new Person[size];
-    }
+    Contact(int size);
+
     
     ~Contact() {delete persons;} 
     

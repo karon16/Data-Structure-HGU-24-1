@@ -4,6 +4,7 @@
 #include <iostream>
 #include <ctype.h>
 #include <stdlib.h>
+
 using namespace std;
 
 #define STACK_SIZE 100

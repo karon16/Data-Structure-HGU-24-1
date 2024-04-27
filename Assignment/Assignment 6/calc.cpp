@@ -12,9 +12,12 @@ string Calculator::infixToPostfix(string infix) {
 
     for (size_t i = 0; i < infix.length(); ++i) {
         char token = infix[i];
+//        char next_token = infix[i+]
         if (isdigit(token)) {
             postfix += token;
-            postfix += ' '; // Add space to separate operands
+            if( i < infix.length()  && !isdigit(infix[i+1]) && infix[i+1] != '.'){
+                postfix += ' '; // Add space to separate operands
+            }
         } else if (token == '(') {
             stack.push(token);
         } else if (token == ')') {
@@ -35,6 +38,8 @@ string Calculator::infixToPostfix(string infix) {
                 postfix += ' '; // Add space to separate operators
             }
             stack.push(token);
+        }else{
+            postfix += token;
         }
     }
 

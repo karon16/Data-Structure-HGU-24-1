@@ -1,7 +1,7 @@
 CC=g++
-CFLAGS=-c -Wall -std=c++11
+CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=main.cpp Contact.cpp
+SOURCES=main.cpp BinTree.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main
 

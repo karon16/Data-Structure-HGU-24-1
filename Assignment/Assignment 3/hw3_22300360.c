@@ -27,7 +27,7 @@ int main(void) {
 
     if (strcmp(operation, "a") == 0) {
 
-        //call function read_file to read files
+        //call function read_file to read Files
         read_file(&a, matrix_a_size);
         ah = matrix_a_size[0];
         aw = matrix_a_size[1];
@@ -60,7 +60,7 @@ int main(void) {
         free2dArray(b, bh);
         free2dArray(result, ah);
     } else if (strcmp(operation, "m") == 0) {
-        //call function read_file to read files
+        //call function read_file to read Files
         read_file(&a, matrix_a_size);
         ah = matrix_a_size[0];
         aw = matrix_a_size[1];
@@ -95,7 +95,7 @@ int main(void) {
         free2dArray(result, ah);
 
     } else if (strcmp(operation, "t") == 0) {
-        //call function read_file to read files
+        //call function read_file to read Files
         read_file(&a, matrix_a_size);
         ah = matrix_a_size[0];
         aw = matrix_a_size[1];

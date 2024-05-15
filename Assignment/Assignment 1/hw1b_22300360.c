@@ -7,7 +7,7 @@
 #include <ctype.h>
 
 
-#define FILE_NAME "./Test files/example1.txt"
+#define FILE_NAME "./Test Files/example1.txt"
 
 enum {STRING ,INTEGER, SPECIAL};
 

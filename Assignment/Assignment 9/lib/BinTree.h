@@ -25,8 +25,8 @@ public:
     BinTree();
     ~BinTree();
     bool IsEmpty();
-    void insert_node_left(node_data data);
-    void insert_node_right(node_data data);
+    void insert_node_left(const node_data& data);
+    void insert_node_right(const node_data& data);
     tree_node* search(const string& key);
     tree_node* searchToReplace(const string& key);
     void insert_node(const node_data& data);

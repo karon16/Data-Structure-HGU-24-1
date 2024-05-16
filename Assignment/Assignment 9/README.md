@@ -63,3 +63,10 @@ This output is based on the replacements specified in the map file.
 2. Run the program.
 3. The revised text will be printed on the screen.
 
+## What to submit
+Submit a hw9.zip file on the LMS, use this command to create a zip file.
+
+```
+zip -rX hw9.zip *.cpp ./lib/*cpp ./lib/*h makefile
+```
+

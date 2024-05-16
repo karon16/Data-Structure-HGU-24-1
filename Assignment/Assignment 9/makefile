@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -std=c++11
 LDFLAGS=
 SOURCES=main.cpp ./lib/BinTree.cpp ./lib/Utilities.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
@@ -17,4 +17,4 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -rf *o $(EXECUTABLE)
+	rm -rf *o $(EXECUTABLE) ./lib/*o

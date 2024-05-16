@@ -29,7 +29,7 @@ bool BinTree::IsEmpty(){
     return (root == nullptr);
 }
 
-void BinTree::insert_node_left(node_data data){
+void BinTree::insert_node_left(const node_data& data){
     tree_node *ptr = new tree_node;
     ptr->data.key = data.key;
     ptr->data.name = data.name;
@@ -42,7 +42,7 @@ void BinTree::insert_node_left(node_data data){
     }
 }
 
-void BinTree::insert_node_right(node_data data){
+void BinTree::insert_node_right(const node_data& data){
     tree_node *ptr = new tree_node;
     ptr->data.key = data.key;
     ptr->data.name = data.name;
@@ -105,10 +105,10 @@ void BinTree::insert_node(const node_data& data) {
     parent = search(data.key);
     if(parent || IsEmpty()) { // if num is not in the tree
         ptr = new tree_node;
-        if(ptr == nullptr) {
-            cerr << "The memory is full" << endl;
-            exit(1);
-        }
+//        if(ptr == nullptr) {
+//            cerr << "The memory is full" << endl;
+//            exit(1);
+//        }
         ptr->data.key = data.key;
         ptr->data.name = data.name;
         ptr->left_child = ptr->right_child = nullptr;

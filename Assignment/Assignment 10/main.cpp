@@ -11,6 +11,11 @@
 
 using namespace std;
 
+struct word_data {
+    string word;
+    int count;
+};
+
 int main(){
     string filename; // file name
     string line; // lines in file
@@ -39,12 +44,13 @@ int main(){
     // split string into words with space delimiter
     vector<string> word_list = Utilities::split(file_lines, " ");
 
+    vector<word_data> words;
     vector<string> word;
     vector<int> word_frequency;
 
     //    cout << "Before the loop" << endl;
     // count words
-    Utilities::countWords(word_list, word, word_frequency);
+    Utilities::countWords(word_list, words.);
 
 
     // sort word and word count arrays

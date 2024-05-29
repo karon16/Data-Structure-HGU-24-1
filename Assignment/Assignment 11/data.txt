@@ -1,0 +1,10 @@
+henry choi; 20190303; hchoi@handong.edu; 010-1234-5678
+jane doe; 19900214; janedoe@example.com; 010-2345-6789
+john smith; 19850721; johnsmith@example.com; 010-3456-7890
+alice johnson; 19781230; alice.johnson@example.com; 010-4567-8901
+bob brown; 20010405; bob.brown@example.com; 010-5678-9012
+clara oswald; 19891123; clara.oswald@example.com; 010-6789-0123
+david tennant; 19720418; david.tennant@example.com; 010-7890-1234
+eva green; 19800706; eva.green@example.com; 010-8901-2345
+frank castle; 19931115; frank.castle@example.com; 010-9012-3456
+grace hopper; 19061209; grace.hopper@example.com; 010-0123-4567

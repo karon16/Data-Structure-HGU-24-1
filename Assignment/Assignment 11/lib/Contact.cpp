@@ -186,7 +186,7 @@ bool Contact::Save(){
     return true;
 }
 
-// Sort using mergeSort
+// Sort using MergeSort
 void Contact::Sort() {
     cout << "Sort by (1) Name or (2) Birthday: ";
     int sortChoice;
@@ -194,9 +194,9 @@ void Contact::Sort() {
     cin.ignore(); // clear new line
     // sort By name
     if (sortChoice == 1) {
-        top = mergeSort(top, 1);
+        top = MergeSort(top, 1);
     } else if (sortChoice == 2) { // Srt by Birthday
-        top = mergeSort(top, 2);
+        top = MergeSort(top, 2);
     } else {
         cout << "Invalid command." << endl;
     }
@@ -287,7 +287,7 @@ string Contact::trim(string s) {
 }
 
 // split the linked list into two halves
-stack_node* Contact::split(stack_node* head) {
+stack_node* Contact::Split(stack_node* head) {
     stack_node* slow = head;
     stack_node* fast = head->link;
 
@@ -302,8 +302,8 @@ stack_node* Contact::split(stack_node* head) {
     return second_half;
 }
 
-//  merge two sorted linked lists
-stack_node* Contact::merge(stack_node* first, stack_node* second, int sort_by) {
+//  Merge two sorted linked lists
+stack_node* Contact::Merge(stack_node* first, stack_node* second, int sort_by) {
     // Base cases, when the poniter is null
     if (!first) return second;
     if (!second) return first;
@@ -315,30 +315,30 @@ stack_node* Contact::merge(stack_node* first, stack_node* second, int sort_by) {
         check =  first->data.birthday < second->data.birthday;
     }
 
-    // Recursive merge
+    // Recursive Merge
     if (check) {
-        first->link = merge(first->link, second, sort_by);
+        first->link = Merge(first->link, second, sort_by);
         return first;
     } else {
-        second->link = merge(first, second->link, sort_by);
+        second->link = Merge(first, second->link, sort_by);
         return second;
     }
 }
 
-// merge sort on the linked list
-stack_node* Contact::mergeSort(stack_node *head, int sort_by) {
+// Merge sort on the linked list
+stack_node* Contact::MergeSort(stack_node *head, int sort_by) {
     // Base case: if head is null or there's only one element
     if (!head || !head->link) {
         return head;
     }
 
     // Split the list into two halves
-    stack_node* second_half = split(head);
+    stack_node* second_half = Split(head);
 
     // Recursively sort the two halves
-    stack_node* left = mergeSort(head, sort_by);
-    stack_node* right = mergeSort(second_half, sort_by);
+    stack_node* left = MergeSort(head, sort_by);
+    stack_node* right = MergeSort(second_half, sort_by);
 
     // Merge the sorted halves
-    return merge(left, right, sort_by);
+    return Merge(left, right, sort_by);
 }

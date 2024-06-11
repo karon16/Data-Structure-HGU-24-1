@@ -44,9 +44,9 @@ public:
     Element Retrieve() const;
     void PrintContact(Element element) const;
     void Sort();
-    stack_node* mergeSort(stack_node* head, int sort_by);
-    stack_node* merge(stack_node* first, stack_node* second, int sort_by);
-    static  stack_node* split(stack_node* head);
+    stack_node* MergeSort(stack_node* head, int sort_by);
+    stack_node* Merge(stack_node* first, stack_node* second, int sort_by);
+    static  stack_node* Split(stack_node* head);
 
 
 };

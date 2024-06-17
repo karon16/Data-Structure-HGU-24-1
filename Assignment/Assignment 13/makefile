@@ -5,6 +5,7 @@ SOURCES=main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main
 
+
 all: $(SOURCES) $(EXECUTABLE)
 
 run: $(EXECUTABLE)
@@ -17,7 +18,7 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -rf *o $(EXECUTABLE) *zip
+	rm -rf *o $(EXECUTABLE)
 
 zip:
 	zip -rX HW13.zip *.cpp makefile data.txt comment.md

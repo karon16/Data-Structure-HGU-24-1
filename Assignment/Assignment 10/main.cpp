@@ -50,7 +50,7 @@ int main(){
 
     //    cout << "Before the loop" << endl;
     // count words
-    Utilities::countWords(word_list, words.);
+    Utilities::countWords(word_list, word, word_frequency);
 
 
     // sort word and word count arrays
